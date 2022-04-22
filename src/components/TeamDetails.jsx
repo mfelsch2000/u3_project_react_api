@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BASE_URL } from '../globals'
+import { BASE_URL, LOGO_URL } from '../globals'
 
 const TeamDetails = (props) => {
 
@@ -19,13 +19,17 @@ const TeamDetails = (props) => {
         <div>
             { teamDetails ? 
                 (
-                    <p>{teamDetails.name}</p>
+                    <div>
+                        <img src={`${LOGO_URL}${teamDetails.logo}`} alt="logo"></img>
+                        <p>{teamDetails.name}</p>
+                    </div>
                 ):( 
-                    <p>Teams details loadings ...</p>
+                    <p>Team details loadings ...</p>
                 )
             }
         </div>
     )
 }
 
+//https://squiggle.com.au/wp-content/themes/squiggle/assets/images/Adelaide.png
 export default TeamDetails
