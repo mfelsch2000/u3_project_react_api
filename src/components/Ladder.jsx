@@ -7,7 +7,7 @@ const Ladder = (props) => {
         <div className="ladder">
            { props.ladder.map((standing) => (
                     <div className="standing" key={standing.id}> 
-                         <img src={`${props.logoAddress(standing.id)}`} alt="logo"></img>
+                         <img src={`${props.getLogoAddress(standing.id)}`} alt="logo"></img>
                         <span className="teamName">{standing.rank}</span> 
                         <span className="teamName" onClick={()=>props.selectTeam(standing.id)}>{standing.name}</span> 
                         <span className="games">{standing.wins}</span>

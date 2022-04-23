@@ -42,7 +42,7 @@ function App() {
 
   }, [])
 
-  const logoAddress = (teamId) => {
+  const getLogoAddress = (teamId) => {
     let logo = LOGO_URL
     if (teams && teams.length >= (teamId - 1) && teamId > 0) {
         logo += teams[teamId - 1].logo
@@ -51,7 +51,7 @@ function App() {
   }
   
   const selectTeam = (id) => {
-    console.log("Selected " + id)
+    //console.log("Selected " + id)
     setSelectedTeam(id)
   }
 
@@ -60,15 +60,18 @@ function App() {
       <header className="App-header">
         <p>AFL Footy Results</p>
       </header>
-      {
-        selectedTeam ? 
-        (
-          <TeamDetails teamId={selectedTeam}></TeamDetails>
-        ) : (
-          <Ladder ladder={ladder} teams={teams} logoAddress={logoAddress} selectTeam={selectTeam} ></Ladder> 
-        )
-
-      }
+      <div className="Ladder-View">
+        <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} selectTeam={selectTeam} ></Ladder> 
+        {
+          selectedTeam ? 
+          (
+            <TeamDetails teamId={selectedTeam}></TeamDetails>
+          ) : (
+            <div></div>
+          )
+          }
+        </div>
+      
     </div>
   );
 }

@@ -8,12 +8,13 @@ const TeamDetails = (props) => {
 
     useEffect(()=>{
         const getTeam = async () => {
+            //console.log("Team details, get team = " + props.teamId)
             const resp = await axios.get(`${BASE_URL}/?q=teams;team=${props.teamId};format=json`)
-            console.log(resp.data.teams)
             setTeamDetails(resp.data.teams[0])
         }
         getTeam()
-      }, [])
+
+      }, [props.teamId])
 
     return (
         <div>
