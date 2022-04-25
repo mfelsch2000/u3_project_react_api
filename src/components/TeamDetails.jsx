@@ -20,9 +20,13 @@ const TeamDetails = (props) => {
         <div>
             { teamDetails ? 
                 (
-                    <div>
-                        <img src={`${LOGO_URL}${teamDetails.logo}`} alt="logo"></img>
-                        <p>{teamDetails.name}</p>
+                    <div className="Team-View">
+                        <div className="Team-View-Logo-Container">
+                            <img src={`${LOGO_URL}${teamDetails.logo}`} alt="logo"></img>
+                        </div>
+                        <div>
+                            <p>{teamDetails.name}</p>
+                        </div>
                     </div>
                 ):( 
                     <p>Team details loadings ...</p>

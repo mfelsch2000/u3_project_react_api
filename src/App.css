@@ -43,3 +43,74 @@
     flex-wrap: wrap;
     align-content: space-between;
 }
+
+.Team-View {
+  display:flex;
+  min-height: 60vh;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.Team-View-Logo-Container {
+  width: 190px;
+  align-content: center;
+}
+.ladder_cell.smallLogo  {
+  height: 1em;
+  width: 1em;
+}
+
+.Table-Heading {
+  display: inline;
+  font-weight: 600;
+  height: 3em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.ladder {
+  width: 40%;
+}
+
+.ladder_headings{
+  font-weight: 600;
+  display:inline;
+  flex-grow: 1; 
+  display: flex; 
+  justify-content: space-between;
+  height: 2em;
+} 
+
+.ladder_position {
+  display:inline;
+  flex-grow: 1; 
+  display: flex; 
+  justify-content: space-between;
+  height: 2em;
+} 
+
+.ladder_cell {
+  padding: 0 0.3em;
+  width: 1.5em;
+  text-align: center;
+}
+
+
+.ladder_team_name{
+  width: auto;
+}
+
+.ladder_cell.ladder_percentage {
+  text-align: center;
+}
+
+.team_standing {
+  display:inline;
+  width: 15%;
+  text-align: left;
+  justify-content: left;
+  display:inline;
+  flex-grow: 1; 
+  display: flex; 
+  justify-content:left;
+} 
