@@ -1,3 +1,4 @@
+import ChangeInRank from "./ChangeInRank";
 import TeamDetails from "./TeamDetails";
 
 
@@ -17,9 +18,12 @@ const Ladder = (props) => {
             </div>
             <div className="Table-Content">
                { props.ladder.map((standing) => (
-                <div className="ladder_position" key={standing.id} onClick={()=>props.selectTeam(standing.id)}>
+                <div className="ladder_position" key={standing.id} onFocus={()=>{}} onClick={()=>props.selectTeam(standing.id)}>
                     <div className="team_standing">
-                        <div className="ladder_cell ">{standing.rank}</div>
+                        <div className="ladder_cell">{standing.rank}</div>
+                        <div className="ladder_change-in-rank">
+                            <ChangeInRank changeInRank={props.changeInRank(standing.id)}></ChangeInRank>
+                        </div>
                         <img className="ladder_cell smallLogo" src={`${props.getLogoAddress(standing.id)}`} alt="logo" ></img>
                         <div className="ladder_cell ladder_team_name" >{standing.name}</div>
                     </div>

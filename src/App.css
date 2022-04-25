@@ -114,3 +114,20 @@
   display: flex; 
   justify-content:left;
 } 
+
+.rankChange{
+  position: relative;
+  width: 1.1em;
+  top: -0.2em;
+}
+
+.Table-Content.rankChange{
+  width: 0.3em;
+  height: 0.3em;
+}
+
+.ladder_change-in-rank{
+  width: 1.1em;
+  padding-right: 0.6em;
+  text-align: center;
+}

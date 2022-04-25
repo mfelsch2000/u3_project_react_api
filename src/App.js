@@ -10,10 +10,13 @@ import TeamDetails from './components/TeamDetails.jsx'
 function App() {
 
   const [ladder, setLadder] = useState([])
+  const [previousLadder, setPreviousLadder] = useState([])
+  
   const [teams, setTeams] = useState(null)
   const [selectedTeam, setSelectedTeam] = useState(null)
 
   let ladderRequest = 0
+  let previousLadderRequest = 0
   let teamsRequest = 0
 
   useEffect(()=>{
@@ -22,6 +25,12 @@ function App() {
       const resp = await axios.get(`${BASE_URL}/?q=standings;format=json`)
       console.log(resp.data.standings)
       setLadder(resp.data.standings)
+    } 
+
+    const getPreviousLadder = async () => {
+      const resp = await axios.get(`${BASE_URL}/?q=standings;round=5;format=json`)
+      console.log(resp.data.standings)
+      setPreviousLadder(resp.data.standings)
     } 
 
     const getTeams = async () => {
@@ -33,6 +42,11 @@ function App() {
     if (ladderRequest === 0) {
       getLadder()
       ladderRequest = 1
+    }
+
+    if (previousLadderRequest === 0) {
+      getPreviousLadder()
+      previousLadderRequest = 1
     }
 
     if (teamsRequest === 0) {
@@ -52,7 +66,49 @@ function App() {
   
   const selectTeam = (id) => {
     //console.log("Selected " + id)
-    setSelectedTeam(id)
+    const team = teams[id-1]
+    setSelectedTeam(team)
+  }
+
+  const getCurrentStanding = (id) => {
+    const standings = ladder.filter((standing) => { return standing.id === id })
+    if (standings.length > 0) {
+      return standings[0]
+    }
+  }
+
+  const getPreviousStanding = (id) => {
+    const   standings = previousLadder.filter((standing) => { return standing.id === id })
+    if (standings.length > 0) {
+      return standings[0]
+    }
+  }
+
+  const changeInRank = (id) => {
+    
+    const currentStanding = getCurrentStanding(id)
+    if (currentStanding) {
+     // console.log("Current standing: " + currentStanding.rank)
+    } else {
+      console.log("No current standings")
+    }
+    
+    const previousStanding = getPreviousStanding(id)
+    if (previousStanding) {
+      //console.log("Previous standing: " + previousStanding.rank)
+    } else {
+      console.log("No previous standings")
+    }
+
+    let change = "None"
+    if (currentStanding && previousStanding) {
+      if (currentStanding.rank < previousStanding.rank) {
+        change = "Up"
+      } else if (currentStanding.rank > previousStanding.rank) {
+        change = "Down"
+      }
+    }
+    return change
   }
 
   return (
@@ -61,11 +117,15 @@ function App() {
         <p>AFL Footy Results</p>
       </header>
       <div className="Ladder-View">
-        <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} selectTeam={selectTeam} ></Ladder> 
+        <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} changeInRank={changeInRank} selectTeam={selectTeam} ></Ladder> 
         {
           selectedTeam ? 
           (
-            <TeamDetails teamId={selectedTeam}></TeamDetails>
+            <TeamDetails 
+                team={selectedTeam} 
+                currentStanding={getCurrentStanding(selectedTeam.id)} 
+                changeInRank={changeInRank(selectedTeam.id)}>
+            </TeamDetails>
           ) : (
             <div></div>
           )
