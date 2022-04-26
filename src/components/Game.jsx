@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+
 
 const Game = (props) => {
 
@@ -20,11 +22,14 @@ const Game = (props) => {
         } else {
             teamName = game.ateam ? game.ateam : '---'
         }
+        if (teamName === "Greater Western Sydney") {
+            teamName = "Giants"
+        }
         return teamName
     }
 
     const teamClass = (team) => {
-        let teamClass = "team"
+        let teamClass = "teamName"
 
         if (team === "home") {
             teamClass += " homeTeam"
@@ -36,41 +41,74 @@ const Game = (props) => {
             if (team === "home" && game.hteam === game.winner) {
                 teamClass += " winner"
             }
-            else if (team === "away" && game.ateam == game.winner) {
+            else if (team === "away" && game.ateam === game.winner) {
                 teamClass += " winner"
             } 
             else {
                 teamClass += " draw"
             }
         }
+        return teamClass
 
+    }
+
+
+    const gameDate = () => {
+        if (!hasResult) {
+            const rawGameDate = Date.parse(game.date.slice(0, 10))
+            const formattedDate = new Intl.DateTimeFormat('en-US', dateOptions).format(rawGameDate);
+            return formattedDate
+        } 
+        else {
+            return ""
+        }
     }
 
     return (
         game ?
             (      
-                 <div>
-                    <span className={teamClass("home")}>{teamName("home")}</span>
-                    {hasResult ? 
-                        (
-                            <span>
-                                <span className="goals">{game.hgoals}.{game.hbehinds}.</span>
-                                <span className="score">{game.hscore}</span>
-                                <span className="divider">v</span>
-                                <span className="goals">{game.agoals}.{game.abehinds}.</span>
-                                <span className="score">{game.ascore}</span>
-                            </span>
-                        )
-                        :
-                        (
-                            <span>
-                                <span className="score"></span>
-                                <span className="divider">v</span>
-                                <span className="score"></span>
-                            </span>
-                        )
-                    }
-                    <span className={teamClass("away")}>{teamName("away")}</span>
+                 <div className="game-container">
+                    <div className="round-game-date-container">
+                        <div className="round-name">{game.roundname}</div>
+                        <div className="game-date">{gameDate()}</div>
+                    </div>
+                    <div className="game-teams-results-container">
+                        <div className="game-team-name-container home-team">
+                            <div className="game-logo-container">
+                                <img className="mediumLogo" src={`${props.getLogoAddress(game.hteamid)}`} alt="logo" ></img>
+                            </div>
+                            <div className={teamClass("home")}>{teamName("home")}</div>
+                        </div>
+                        {hasResult ? 
+                            (
+                                <div className="match-result-container">
+                                    <div className="team-score-container">
+                                        <div className="score">{game.hscore}</div>
+                                        <div className="goals">{game.hgoals}.{game.hbehinds}</div>
+                                    </div>
+                                    <div className="divider">v</div>
+                                    <div className="team-score-container">
+                                        <div className="score">{game.ascore}</div>
+                                        <div className="goals">{game.agoals}.{game.abehinds}</div>
+                                    </div>
+                                </div>
+                            )
+                            :
+                            (
+                                <span>
+                                    <span className="score"></span>
+                                    <span className="divider">v</span>
+                                    <span className="score"></span>
+                                </span>
+                            )
+                        }   
+                        <div className="game-team-name-container home-team">
+                            <div className="game-logo-container">
+                                <img className="mediumLogo" src={`${props.getLogoAddress(game.ateamid)}`} alt="logo" ></img>
+                            </div>
+                            <div className={teamClass("away")}>{teamName("away")}</div>
+                        </div>
+                    </div>
                 </div>
             )
             :

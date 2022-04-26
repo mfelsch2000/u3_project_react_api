@@ -15,7 +15,7 @@ const ChangeInRank = (props) => {
                 : ( 
                 isDown ?                 
                 (<img className="rankChange" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Down_red_arrow.png"></img>)
-                : ("-") )
+                : (<span className="rankChange-Neutral">-</span>) )
         }
         </span>
     )

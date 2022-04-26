@@ -113,18 +113,21 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>AFL Footy Results</p>
-      </header>
+      <div className="App-header">
+        <h2>AFL Footy Results</h2>
+      </div>
       <div className="Ladder-View">
-        <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} changeInRank={changeInRank} selectTeam={selectTeam} ></Ladder> 
+        <div>
+          <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} changeInRank={changeInRank} selectTeam={selectTeam} ></Ladder> 
+        </div>
         {
           selectedTeam ? 
           (
             <TeamDetails 
                 team={selectedTeam} 
                 currentStanding={getCurrentStanding(selectedTeam.id)} 
-                changeInRank={changeInRank(selectedTeam.id)}>
+                changeInRank={changeInRank(selectedTeam.id)}
+                getLogoAddress={getLogoAddress}>
             </TeamDetails>
           ) : (
             <div></div>

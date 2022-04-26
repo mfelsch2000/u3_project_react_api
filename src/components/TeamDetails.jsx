@@ -55,39 +55,69 @@ const TeamDetails = (props) => {
             { teamDetails ? 
                 (
                     <div className="Team-View">
-                        <div className="Team-View-Logo-Container">
-                            <img src={`${LOGO_URL}${teamDetails.logo}`} alt="logo"></img>
+                        <div className="Team-View-Logo-Name-Container">
+                            <h3>{teamDetails.name}</h3>
+                            <img className="Logo-large" src={props.getLogoAddress(props.team.id)} alt="logo"></img>
                         </div>
-                        <p>{teamDetails.name}</p>
-                        <div>
-                            <p>Rank: {props.currentStanding.rank}</p>
-                            <ChangeInRank changeInRank={props.changeInRank}></ChangeInRank>
-                            <div className="team_details">Played: {props.currentStanding.played}</div>
-                            <div className="team_details">Wins: {props.currentStanding.wins}</div>
-                            <div className="team_details">Losses: {props.currentStanding.losses}</div>
-                            <div className="team_details">Draws: {props.currentStanding.draws}</div>
-                            <div className="team_details">Points: {props.currentStanding.pts}</div>
-                            <div className="team_details">For: {props.currentStanding.for}</div>
-                            <div className="team_details">Against: {props.currentStanding.against}</div>
-                            <div className="team_details ladder_percentage">Percentage: {props.currentStanding.percentage.toFixed(1)}</div>
-                        </div>
-                        <div>
-                            { games ? 
-                                (
-                                    <PlayedGames games={playedGames(teamDetails.id)}></PlayedGames>
-                                ) : (
-                                    <div>Games loading ... </div>
-                                )
-                            }
-                        </div>
-                        <div>
-                            { games ? 
-                                (
-                                    <Fixture games={remainingGames(teamDetails.id)}></Fixture>
-                                ) : (
-                                    <div>Games loading ... </div>
-                                )
-                            }
+                        <div className="Team-View-Details-Container">
+                            <div className="Team-Season-Snapshot">
+                                <div className="Team-Stats">
+                                    <div className="Team-Stats-Block Team-Stats-1">
+                                        <div className="Team-Stats-Row Team-Stats-1 Team-Stats-Headings">
+                                            <div className="team_stats_cell">Rank</div>
+                                            <div className="team_stats_cell">Played</div>
+                                            <div className="team_stats_cell">Points</div>
+                                        </div>
+                                        <div className="Team-Stats-Row Team-Stats-1 Team-Stats-Values">
+                                            <div className="team_stats_cell Rank-Container">
+                                                <span className="rank">{props.currentStanding.rank}</span>
+                                                <ChangeInRank changeInRank={props.changeInRank}></ChangeInRank>
+                                            </div>
+                                            <div className="team_stats_cell">{props.currentStanding.played}</div>
+                                            <div className="team_stats_cell">{props.currentStanding.pts}</div>
+                                        </div>
+                                    </div>
+                                    <div className="Team-Stats-Block Team-Stats-2">
+                                        <div className="Team-Stats-Row Team-Stats-2 Team-Stats-Headings">
+                                            <div className="team_stats_cell">Wins</div>
+                                            <div className="team_stats_cell">Losses</div>
+                                            <div className="team_stats_cell">Drawn</div>
+                                        </div>
+                                        <div className="Team-Stats-Row Team-Stats-2 Team-Stats-Values">
+                                            <div className="team_stats_cell">{props.currentStanding.wins}</div>
+                                            <div className="team_stats_cell">{props.currentStanding.losses}</div>
+                                            <div className="team_stats_cell">{props.currentStanding.draws}</div>
+                                        </div>
+
+                                    </div>
+                                    <div className="Team-Stats-Block Team-Stats-3">
+                                        <div className="Team-Stats-Row Team-Stats-3 Team-Stats-Headings">
+                                            <div className="team_stats_cell">For</div>
+                                            <div className="team_stats_cell">Against</div>
+                                            <div className="team_stats_cell">%</div>
+                                        </div>
+                                        <div className="Team-Stats-Row Team-Stats-3 Team-Stats-Values">
+                                            <div className="team_stats_cell">{props.currentStanding.for}</div>
+                                            <div className="team_stats_cell">{props.currentStanding.against}</div>
+                                            <div className="team_stats_cell">{props.currentStanding.percentage.toFixed(1)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="Team-Games-Summary">
+                                    <div>
+                                        { games ? 
+                                            (<PlayedGames games={playedGames(teamDetails.id)} getLogoAddress={props.getLogoAddress}></PlayedGames>)
+                                            : (<div>Results loading ... </div>)
+                                        }
+                                    </div>
+                                    <div>
+                                        { games ? 
+                                            (<Fixture games={remainingGames(teamDetails.id)} getLogoAddress={props.getLogoAddress}></Fixture>) 
+                                            : (<div>Fixtures loading ... </div>)
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ):( 
@@ -99,3 +129,10 @@ const TeamDetails = (props) => {
 }
 
 export default TeamDetails
+
+/*
+.team_stats_cell {
+  border: 0.05em;
+  border-style: dotted;
+}
+*/

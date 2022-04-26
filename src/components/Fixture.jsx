@@ -29,12 +29,13 @@ const Fixture = (props) => {
 
     return (
         <div>
+            <h4>Fixtures</h4>
             { games ?
             (
                 <div>
                 { viewList().map((game) => (
                     <div className="unplayed_game" key={game.id} onFocus={()=>{}} onClick={()=>props.selectGame(game.id)}>
-                         <Game key={game.id} game={game}></Game>
+                         <Game key={game.id} game={game}  getLogoAddress={props.getLogoAddress}></Game>
                     </div>
                 ))}
                 { largeList ?

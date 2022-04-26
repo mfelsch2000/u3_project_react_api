@@ -6,7 +6,7 @@ const Ladder = (props) => {
   
     return (
         <div className="ladder"> 
-            <div className="Table-Heading">2022 AFL Ladder</div>
+            <h3 className="Table-Heading">2022 AFL Ladder</h3>
             <div className="ladder_headings"> 
                 <div className="ladder_cell ladder_header team_standing">Position</div>
                 <div className="ladder_cell ladder_header">P</div>
