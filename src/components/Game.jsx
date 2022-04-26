@@ -10,7 +10,7 @@ const Game = (props) => {
         if (props.game) {
             setHasResult(props.game.complete > 0)
         }
-    }, props.game)
+    }, [props.game])
 
 
     const teamName = (team) => {
