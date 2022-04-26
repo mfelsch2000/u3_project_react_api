@@ -15,10 +15,11 @@ const TeamDetails = (props) => {
                  
         const getGames = async () => {
             const resp = await axios.get(`${BASE_URL}/?q=games;year=2022;format=json`)
-            //console.log(resp.data.games)
+            console.log(resp.data.games)
             setGames(resp.data.games)
         }
-         
+        
+        console.log("TD: " + props.team.id)
         setTeamDetails(props.team)
 
         if (gamesRequest === 0) {
