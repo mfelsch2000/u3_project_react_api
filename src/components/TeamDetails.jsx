@@ -27,7 +27,8 @@ const TeamDetails = (props) => {
                                 team={team} 
                                 currentStanding={props.currentStanding}
                                 getLogoAddress={props.getLogoAddress}
-                                changeInRank={props.changeInRank} >
+                                changeInRank={props.changeInRank}
+                                selectTeam={props.selectTeam} >
                             </Snapshot>
                         </div>
                     </div>

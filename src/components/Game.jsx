@@ -73,7 +73,7 @@ const Game = (props) => {
                         <div className="game-date">{gameDate()}</div>
                     </div>
                     <div className="game-teams-results-container">
-                        <div className="game-team-name-container home-team">
+                        <div className="game-team-name-container home-team"  onClick={()=>props.selectTeam(game.hteamid)}>
                             <div className="game-logo-container">
                                 <img className="mediumLogo" src={`${props.getLogoAddress(game.hteamid)}`} alt="logo" ></img>
                             </div>
@@ -102,7 +102,7 @@ const Game = (props) => {
                                 </span>
                             )
                         }   
-                        <div className="game-team-name-container home-team">
+                        <div className="game-team-name-container away-team" onClick={()=>props.selectTeam(game.ateamid)}>
                             <div className="game-logo-container">
                                 <img className="mediumLogo" src={`${props.getLogoAddress(game.ateamid)}`} alt="logo" ></img>
                             </div>

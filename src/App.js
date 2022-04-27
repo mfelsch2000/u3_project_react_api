@@ -138,7 +138,8 @@ function App() {
                     team={selectedTeam} 
                     currentStanding={getCurrentStanding(selectedTeam.id)} 
                     changeInRank={changeInRank(selectedTeam.id)}
-                    getLogoAddress={getLogoAddress}>
+                    getLogoAddress={getLogoAddress}
+                    selectTeam={selectTeam}>
                 </TeamDetails> ) 
               : 
               (<div></div>)

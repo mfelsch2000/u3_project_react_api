@@ -113,13 +113,21 @@ const Snapshot = (props) => {
             <div className="Team-Games-Summary">
                 <div>
                     { games ? 
-                        (<PlayedGames games={playedGames(team.id)} getLogoAddress={props.getLogoAddress}></PlayedGames>)
+                        (<PlayedGames 
+                            games={playedGames(team.id)} 
+                            getLogoAddress={props.getLogoAddress}
+                            selectTeam={props.selectTeam} >
+                         </PlayedGames>)
                         : (<div>Results loading ... </div>)
                     }
                 </div>
                 <div>
                     { games ? 
-                        (<Fixture games={remainingGames(team.id)} getLogoAddress={props.getLogoAddress}></Fixture>) 
+                        (<Fixture 
+                            games={remainingGames(team.id)} 
+                            getLogoAddress={props.getLogoAddress}
+                            selectTeam={props.selectTeam} >  
+                        </Fixture>) 
                         : (<div>Fixtures loading ... </div>)
                     }
                 </div>

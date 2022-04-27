@@ -35,7 +35,12 @@ const Fixture = (props) => {
                 <div>
                 { viewList().map((game) => (
                     <div className="unplayed_game" key={game.id} onFocus={()=>{}} onClick={()=>props.selectGame(game.id)}>
-                         <Game key={game.id} game={game}  getLogoAddress={props.getLogoAddress}></Game>
+                         <Game 
+                            key={game.id} 
+                            game={game}  
+                            getLogoAddress={props.getLogoAddress}
+                            selectTeam={props.selectTeam}>
+                         </Game>
                     </div>
                 ))}
                 { largeList ?
