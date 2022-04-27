@@ -40,7 +40,7 @@ const Fixture = (props) => {
                 ))}
                 { largeList ?
                     ( shortView ? 
-                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show more</div>)
+                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show all</div>)
                         :
                         (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show less</div>) 
                     ) :

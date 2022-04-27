@@ -13,11 +13,11 @@ const PlayedGames = (props) => {
     useEffect(()=>{
         setGames(props.games)
         setLargeListSize(props.games.length > SHORT_LIST_SIZE)
-    }, props.games)
+    }, props.games.reverse())
 
     const viewList = () => {
         if (shortView) {
-            return games.filter((game, index) => {return((games.length - index) <= SHORT_LIST_SIZE)})
+            return games.filter((game, index) => {return((index < SHORT_LIST_SIZE))})
 //            return games.filter((game, index) => {index > 3})
         } else {
             return games
@@ -43,7 +43,7 @@ const PlayedGames = (props) => {
                 ))}
                 { largeList ?
                     ( shortView ? 
-                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show more</div>)
+                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show all</div>)
                         :
                         (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show less</div>) 
                     ) :

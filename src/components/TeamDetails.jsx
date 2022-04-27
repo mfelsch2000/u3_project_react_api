@@ -38,7 +38,7 @@ const TeamDetails = (props) => {
 
     const playedGames = (teamId) => {
         const season = teamGames(teamId)
-        const playedGames = season.filter((game) => {return (game.complete === 100)})
+        const playedGames = season.filter((game) => {return (game.complete === 100)}).reverse()
         //console.log("Played games. Team: " + teamId + " Played: " + playedGames.length)
         return playedGames
     }

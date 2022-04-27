@@ -244,9 +244,11 @@ h4 {
   margin-left: 5px;
   margin-right: 5px;
 }
-
-.draw {
-  font-weight: 400;
+.losser {
+  font-weight: 600;  
+}
+.teamName {
+  font-weight: 600;
 }
 
 .score{
