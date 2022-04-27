@@ -10,7 +10,7 @@ const Fixture = (props) => {
     const [largeList, setLargeListSize] = useState(true)
     
     useEffect(()=>{
-        console.log("Fixture size: " + props.games.length)
+       // console.log("Fixture size: " + props.games.length)
         setGames(props.games)
         setLargeListSize(props.games.length > SHORT_LIST_SIZE)
     }, props.games)
