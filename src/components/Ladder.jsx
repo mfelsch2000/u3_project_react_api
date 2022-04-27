@@ -5,20 +5,20 @@ import TeamDetails from "./TeamDetails";
 const Ladder = (props) => {
   
     return (
-        <div className="ladder"> 
-            <h3 className="Table-Heading">2022 AFL Ladder</h3>
-            <div className="ladder_headings"> 
+        <div className="Ladder-Container"> 
+            <h3 className="Ladder-Title">2022 AFL Premiership Ladder</h3>
+            <div className="Ladder-Heading-Container"> 
                 <div className="ladder_cell ladder_header team_standing">Position</div>
                 <div className="ladder_cell ladder_header">P</div>
                 <div className="ladder_cell ladder_header">W</div>
                 <div className="ladder_cell ladder_header">L</div>
                 <div className="ladder_cell ladder_header">D</div>
                 <div className="ladder_cell ladder_header">PTS</div>
-                <div className="ladder_cell ladder_header">%</div>
+                <div className="ladder_cell ladder_header ladder_percentage">%</div>
             </div>
             <div className="Table-Content">
                { props.ladder.map((standing) => (
-                <div className="ladder_position" key={standing.id} onFocus={()=>{}} onClick={()=>props.selectTeam(standing.id)}>
+                <div className="Ladder_Row" key={standing.id} onFocus={()=>{}} onClick={()=>props.selectTeam(standing.id)}>
                     <div className="team_standing">
                         <div className="ladder_cell">{standing.rank}</div>
                         <div className="ladder_change-in-rank">

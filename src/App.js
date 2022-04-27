@@ -5,6 +5,7 @@ import axios from 'axios'
 import { BASE_URL, LOGO_URL } from './globals'
 import Ladder from './components/Ladder.jsx'
 import TeamDetails from './components/TeamDetails.jsx'
+// box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 
 function App() {
