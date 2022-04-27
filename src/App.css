@@ -239,11 +239,14 @@ h4 {
 
 .winner{
   font-weight: 600;
+  color: white;
+  background-color:limegreen;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .draw {
   font-weight: 400;
-  color: #066631
 }
 
 .score{
