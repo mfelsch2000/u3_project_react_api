@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Game from './Game'
 
-const SHORT_LIST_SIZE = 3
+const SHORT_LIST_SIZE = 2
 
 const Fixture = (props) => {
  

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Game from './Game.jsx'
 
-const SHORT_LIST_SIZE = 5
+const SHORT_LIST_SIZE = 4
 
 
 const PlayedGames = (props) => {
