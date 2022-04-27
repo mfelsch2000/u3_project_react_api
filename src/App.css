@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,11 +115,11 @@
   }
 
 .Team-View-Logo-Name-Container {
-  width: 170px;
+  width: 180px;
   border-style: none;
-  border-color: black;
+  border-color: blue;
   border-width: 0.1em;
-
+  padding-top: 30px;
 }
 .Logo-large {
   width: 65%;
@@ -128,15 +128,18 @@
 
 .Team-View-Details-Container {
   width: 450px;
-  padding-top: 20px;
   padding-left: 10px;
   padding-right: 20px;
-  border-style: dotted;
+  border-style: none;
   border-color: black;
   border-width: 0.1em;
-  height: 100vh;
+  height: 90vh;
   overflow: auto;
 
+}
+
+.At-A-Glance {
+  margin-block-start: 0.33em
 }
 
 .Team-Stats {
@@ -150,6 +153,12 @@
   box-shadow: rgb(38, 57, 76) 0px 20px 30px -10px;
   padding-top: 0.4em; 
   padding-bottom: 0.2em; 
+}
+
+h4 {
+  margin-block-end: 0.33em;
+  text-align: left;
+  padding-left: 0.5em;
 }
 
 .Team-Stats-Block {
@@ -202,7 +211,7 @@
 
 .team_stats_cell .rankChange {
   width: 1.1em;
-  left: 0.2em;
+  padding-left: 0.2em;
   border: 0.1em;
   border-style: none;
   border-color:blue; 
@@ -224,6 +233,9 @@
 }
 
 
+.Fixture-Container{
+  margin-top: -1em;
+}
 
 .winner{
   font-weight: 600;
@@ -266,15 +278,6 @@
   font-weight: 400; 
 }
 
-.played_game{
-  position: relative;
-  top: -1em;
-}
-
-.unplayed_game{
-  position: relative;
-  top: -1em;
-}
 .game-container{
  margin-top: 0.3em; 
  border-radius: 0.3em;
@@ -336,5 +339,11 @@
   border: 2px;
   border-style: none;
   border-color: dimgrey;
+}
+
+.Show-More-Less-Btn{
+  margin-top: 0.5em;
+  text-align: right;
+  padding-right: 0.5em;
 }
 

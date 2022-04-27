@@ -61,6 +61,7 @@ const TeamDetails = (props) => {
                         </div>
                         <div className="Team-View-Details-Container">
                             <div className="Team-Season-Snapshot">
+                                <h4 className="At-A-Glance">At a glance</h4>
                                 <div className="Team-Stats">
                                     <div className="Team-Stats-Block Team-Stats-1">
                                         <div className="Team-Stats-Row Team-Stats-1 Team-Stats-Headings">

@@ -3,6 +3,7 @@ import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL, LOGO_URL } from './globals'
+import TitlePage from './components/TitlePage';
 import Ladder from './components/Ladder.jsx'
 import TeamDetails from './components/TeamDetails.jsx'
 // box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -10,6 +11,7 @@ import TeamDetails from './components/TeamDetails.jsx'
 
 function App() {
 
+  const [viewTitle, setViewTitle] = useState(true)
   const [ladder, setLadder] = useState([])
   const [previousLadder, setPreviousLadder] = useState([])
   
@@ -78,6 +80,10 @@ function App() {
     }
   }
 
+  const clearTitlePage = () => {
+    setViewTitle(false)
+  }
+
   const getPreviousStanding = (id) => {
     const   standings = previousLadder.filter((standing) => { return standing.id === id })
     if (standings.length > 0) {
@@ -114,28 +120,31 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-header">
-        <h2>AFL Footy Results</h2>
-      </div>
-      <div className="Ladder-View">
-        <div>
-          <Ladder ladder={ladder} teams={teams} getLogoAddress={getLogoAddress} changeInRank={changeInRank} selectTeam={selectTeam} ></Ladder> 
-        </div>
-        {
-          selectedTeam ? 
-          (
-            <TeamDetails 
-                team={selectedTeam} 
-                currentStanding={getCurrentStanding(selectedTeam.id)} 
-                changeInRank={changeInRank(selectedTeam.id)}
-                getLogoAddress={getLogoAddress}>
-            </TeamDetails>
-          ) : (
-            <div></div>
-          )
-          }
-        </div>
-      
+      { viewTitle ?
+        ( <TitlePage clickTitle={clearTitlePage}></TitlePage> ) 
+        : 
+        ( <div className="Ladder-View">
+            <div>
+              <Ladder 
+                  ladder={ladder} 
+                  teams={teams} 
+                  getLogoAddress={getLogoAddress} 
+                  changeInRank={changeInRank} 
+                  selectTeam={selectTeam}>
+              </Ladder> 
+            </div>
+            { selectedTeam ? 
+              ( <TeamDetails 
+                    team={selectedTeam} 
+                    currentStanding={getCurrentStanding(selectedTeam.id)} 
+                    changeInRank={changeInRank(selectedTeam.id)}
+                    getLogoAddress={getLogoAddress}>
+                </TeamDetails> ) 
+              : 
+              (<div></div>)
+            }
+          </div> )
+    }
     </div>
   );
 }

@@ -28,7 +28,7 @@ const Fixture = (props) => {
     }
 
     return (
-        <div>
+        <div className="Fixture-Container">
             <h4>Fixtures</h4>
             { games ?
             (
@@ -40,9 +40,9 @@ const Fixture = (props) => {
                 ))}
                 { largeList ?
                     ( shortView ? 
-                        (<div onClick={()=>selectShowButton()}>Show more</div>)
+                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show more</div>)
                         :
-                        (<div onClick={()=>selectShowButton()}>Show less</div>) 
+                        (<div className="Show-More-Less-Btn" onClick={()=>selectShowButton()}>Show less</div>) 
                     ) :
                     (<div></div>)
                 }
