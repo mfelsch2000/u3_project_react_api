@@ -37,7 +37,7 @@ const PlayedGames = (props) => {
             (
                 <div>
                 { viewList().map((game) => (
-                    <div className="played_game" key={game.id} onFocus={()=>{}} onClick={()=>props.selectGame(game.id)}>
+                    <div className="played_game" key={game.id}>
                         <Game 
                             key={game.id} 
                             game={game} 

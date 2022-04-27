@@ -3,7 +3,9 @@ import TeamDetails from "./TeamDetails";
 
 
 const Ladder = (props) => {
-  
+    const gotFocus = () => {
+        console.log("Focus / unfocus")
+    } 
     return (
         <div className="Ladder-Container"> 
             <h3 className="Ladder-Title">2022 AFL Premiership Ladder</h3>
@@ -18,7 +20,11 @@ const Ladder = (props) => {
             </div>
             <div className="Table-Content">
                { props.ladder.map((standing) => (
-                <div className="Ladder_Row" key={standing.id} onFocus={()=>{}} onClick={()=>props.selectTeam(standing.id)}>
+                <div className="Ladder_Row"
+                     key={standing.id} 
+                     onFocus={()=>console.log('Focused on input')} 
+                     onBlur={()=>{gotFocus()}}
+                     onClick={()=>props.selectTeam(standing.id)}>
                     <div className="team_standing">
                         <div className="ladder_cell">{standing.rank}</div>
                         <div className="ladder_change-in-rank">
