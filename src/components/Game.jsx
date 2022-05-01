@@ -6,6 +6,9 @@ const Game = (props) => {
 
     const [game, setGame] = useState(null)
     const [hasResult, setHasResult] = useState(false)
+    const [isHHovered, setIsHHovered] = useState(false)
+    const [isAHovered, setIsAHovered] = useState(false)
+
     
     useEffect(()=>{
         setGame(props.game)
@@ -13,6 +16,14 @@ const Game = (props) => {
             setHasResult(props.game.complete > 0)
         }
     }, [props.game])
+
+    const getHClass = ()  => {
+        return isHHovered ? "game-team-name-container home-team selectable" : "game-team-name-container home-team"
+    }
+
+    const getAClass = ()  => {
+        return isAHovered ? "game-team-name-container away-team selectable" : "game-team-name-container away-team "
+    }
 
 
     const teamName = (team) => {
@@ -73,7 +84,10 @@ const Game = (props) => {
                         <div className="game-date">{gameDate()}</div>
                     </div>
                     <div className="game-teams-results-container">
-                        <div className="game-team-name-container home-team"  onClick={()=>props.selectTeam(game.hteamid)}>
+                        <div className={getHClass()}  
+                            onClick={()=>props.selectTeam(game.hteamid)}
+                            onMouseOver={()=>{setIsHHovered(true)}}
+                            onMouseOut={()=>{setIsHHovered(false)}}>
                             <div className="game-logo-container">
                                 <img className="mediumLogo" src={`${props.getLogoAddress(game.hteamid)}`} alt="logo" ></img>
                             </div>
@@ -102,7 +116,10 @@ const Game = (props) => {
                                 </span>
                             )
                         }   
-                        <div className="game-team-name-container away-team" onClick={()=>props.selectTeam(game.ateamid)}>
+                        <div className={getAClass()} 
+                             onClick={()=>props.selectTeam(game.ateamid)}
+                             onMouseOver={()=>{setIsAHovered(true)}}
+                             onMouseOut={()=>{setIsAHovered(false)}} >
                             <div className="game-logo-container">
                                 <img className="mediumLogo" src={`${props.getLogoAddress(game.ateamid)}`} alt="logo" ></img>
                             </div>

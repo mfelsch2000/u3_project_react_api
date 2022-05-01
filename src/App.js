@@ -31,7 +31,7 @@ function App() {
     } 
 
     const getPreviousLadder = async () => {
-      const resp = await axios.get(`${BASE_URL}/?q=standings;round=5;format=json`)
+      const resp = await axios.get(`${BASE_URL}/?q=standings;round=6;format=json`)
       console.log(resp.data.standings)
       setPreviousLadder(resp.data.standings)
     } 
