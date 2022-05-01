@@ -19,7 +19,7 @@ const Snapshot = (props) => {
             console.log(topRef)
             if (topRef && topRef.current) {
                 topRef.current.scrollTo({ 
-                 top: topRef.current.offsetTop, 
+                 top: topRef.current.scrollIntoView() , 
                     behavior: "smooth" 
                 })
             }
